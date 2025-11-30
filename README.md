@@ -28,44 +28,44 @@ main :: proc() {
 
 # Functions
 
-```
-from_string :: proc(date: string) -> (out: Date, err: DateError) {
+```odin
+from_string :: proc(date: string) -> (out: Date, err: DateError) 
 ```
 Parses the date.
 
-```
-to_string :: proc(date: Date, time_sep := ' ') -> (out: string, err: DateError) { 
+```odin
+to_string :: proc(date: Date, time_sep := ' ') -> (out: string, err: DateError)  
 ```
 Formats the date as RFC3339.
 
-```
-partial_date_to_string :: proc(date: Date, time_sep := ' ') -> (out: string, err: DateError) {
+```odin
+partial_date_to_string :: proc(date: Date, time_sep := ' ') -> (out: string, err: DateError) 
 ```
 Formats the date for TOML. _Only checks `is_date_only` & `is_time_only`._ 
 
-```
-combine :: proc(date, time: Date) -> Date {
+```odin
+combine :: proc(date, time: Date) -> Date 
 ```
 Combines two partial dates.  
 _Great for parsing single date & time after a tokenizer has split them up by space_
 
-```
-is_date_lax :: proc(date: string) -> bool {
+```odin
+is_date_lax :: proc(date: string) -> bool 
 ```
 Quickly check if a string looks like a date.
 
-```
-get_bad_spot :: proc(str: string, err: DateError) -> int {
+```odin
+get_bad_spot :: proc(str: string, err: DateError) -> int 
 ```
 Gets the index of the rune in the given string (which may have leading/following text) where the parser failed.
 
-```
-to_odin_datetime :: proc(date: Date) -> (result: datetime.DateTime, utc_offset: int, error: datetime.Error) {
+```odin
+to_odin_datetime :: proc(date: Date) -> (result: datetime.DateTime, utc_offset: int, error: datetime.Error) 
 ```
 Convert the library's `Date` type to Odin's standard(-ish) `core:time/datetime.DateTime` & a `utc_offset` (in hours).
 _This may then be converted into other standard date or time types._ 
 
-```
-from_odin_datetime :: proc(dt: datetime.DateTime, utc_offset: int) -> Date {
+```odin
+from_odin_datetime :: proc(dt: datetime.DateTime, utc_offset: int) -> Date 
 ```
 Convert Odin's `DateTime` back into library's `Date`.
