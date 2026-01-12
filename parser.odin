@@ -52,6 +52,7 @@ Date :: struct {
 // YYYY-MM-DD HH-MM-SS+HH:MM (with either date, or time and utc offset being optional)
 // date^^^^^^ time^^^^ ^^^^^utc offset
 from_string :: proc(date: string) -> (out: Date, err: DateError) {
+    if len(date) < 8 { return }
     date := date
 
     out.is_date_only = true
